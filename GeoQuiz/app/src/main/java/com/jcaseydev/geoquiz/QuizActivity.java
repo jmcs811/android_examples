@@ -73,7 +73,6 @@ public class QuizActivity extends AppCompatActivity {
             }
             mIsCheater = CheatActivity.wasAnswerShown(data);
         }
-
     }
 
     // Onclick Methods
@@ -86,6 +85,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void nextButton(View view) {
+        mIsCheater = false;
         updateQuestion();
     }
 
@@ -110,7 +110,7 @@ public class QuizActivity extends AppCompatActivity {
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
 
-        int messageResId = 0;
+        int messageResId;
 
         if (mIsCheater) {
             messageResId = R.string.judement_toast;
