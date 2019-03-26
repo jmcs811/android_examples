@@ -73,6 +73,7 @@ public class DatePickerFragment extends DialogFragment {
                                 int day = mDatePicker.getDayOfMonth();
                                 int hour;
                                 int minute;
+                                // different method based on version
                                 if (Build.VERSION.SDK_INT >= 23) {
                                     hour = mTimePicker.getHour();
                                     minute = mTimePicker.getMinute();
