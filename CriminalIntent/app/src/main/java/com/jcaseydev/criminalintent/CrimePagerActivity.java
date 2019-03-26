@@ -35,6 +35,7 @@ public class CrimePagerActivity extends AppCompatActivity {
 
         mViewPager = findViewById(R.id.crime_view_pager);
         mCrimes = CrimeLab.get(this).getCrimes();
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentPagerAdapter(fragmentManager) {
             @Override
@@ -55,6 +56,5 @@ public class CrimePagerActivity extends AppCompatActivity {
                 break;
             }
         }
-
     }
 }

@@ -19,7 +19,6 @@ public class CrimeListFragment extends Fragment {
 
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
-    private int mUpdateItem;
 
     @Nullable
     @Override
@@ -49,7 +48,7 @@ public class CrimeListFragment extends Fragment {
             mAdapter = new CrimeAdapter(crimes);
             mCrimeRecyclerView.setAdapter(mAdapter);
         } else {
-            mAdapter.notifyItemChanged(mUpdateItem);
+            mAdapter.notifyDataSetChanged();
         }
     }
 
@@ -80,7 +79,6 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            mUpdateItem = getAdapterPosition();
             Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
         }
