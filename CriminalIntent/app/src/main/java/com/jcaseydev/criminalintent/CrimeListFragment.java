@@ -27,7 +27,7 @@ public class CrimeListFragment extends Fragment {
     private CrimeAdapter mAdapter;
     private Button mReportButton;
     private LinearLayout mEmptyRecyclerView;
-    private boolean mSubtitleVisable;
+    private boolean mSubtitleVisible;
 
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
 
@@ -43,7 +43,7 @@ public class CrimeListFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_crime_list, container, false);
 
         if (savedInstanceState != null) {
-            mSubtitleVisable = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
+            mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
         }
 
         // Show this if recyclerview is empty
@@ -74,7 +74,7 @@ public class CrimeListFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisable);
+        outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
 
     }
 
@@ -84,7 +84,7 @@ public class CrimeListFragment extends Fragment {
         inflater.inflate(R.menu.fragment_crime_list, menu);
 
         MenuItem subtitleItem = menu.findItem(R.id.show_subtitle);
-        if (mSubtitleVisable) {
+        if (mSubtitleVisible) {
             subtitleItem.setTitle(R.string.hide_subtitle);
         } else {
             subtitleItem.setTitle(R.string.show_subtitle);
@@ -98,7 +98,7 @@ public class CrimeListFragment extends Fragment {
                 addNewCrime();
                 return true;
             case R.id.show_subtitle:
-                mSubtitleVisable = !mSubtitleVisable;
+                mSubtitleVisible = !mSubtitleVisible;
                 getActivity().invalidateOptionsMenu();
                 updateSubtitle();
                 return true;
@@ -121,7 +121,7 @@ public class CrimeListFragment extends Fragment {
         // handle plural
         String subtitle = getResources().getQuantityString(R.plurals.subtitle_plural, crimeCount, crimeCount);
 
-        if (!mSubtitleVisable) {
+        if (!mSubtitleVisible) {
             subtitle = null;
         }
 
@@ -139,6 +139,7 @@ public class CrimeListFragment extends Fragment {
             mAdapter = new CrimeAdapter(crimes);
             mCrimeRecyclerView.setAdapter(mAdapter);
         } else {
+            mAdapter.setCrimes(crimes);
             mAdapter.notifyDataSetChanged();
         }
         updateSubtitle();
@@ -200,6 +201,10 @@ public class CrimeListFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mCrimes.size();
+        }
+
+        public void setCrimes(List<Crime> crimes) {
+            mCrimes = crimes;
         }
     }
 }
