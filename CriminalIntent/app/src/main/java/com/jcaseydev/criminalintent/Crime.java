@@ -8,6 +8,8 @@ public class Crime {
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
+    private String mSuspect;
+    private String mPhone;
 
     public Crime() {
         this(UUID.randomUUID());
@@ -16,6 +18,10 @@ public class Crime {
     public Crime(UUID id) {
         mId = id;
         mDate = new Date();
+    }
+
+    public UUID getId() {
+        return mId;
     }
 
     public String getTitle() {
@@ -30,6 +36,16 @@ public class Crime {
         return mDate;
     }
 
+    public String getSuspect() {
+        return mSuspect;
+    }
+
+    public String getPhone() { return mPhone; }
+
+    public void setSuspect(String suspect) {
+        mSuspect = suspect;
+    }
+
     public void setDate(Date date) {
         mDate = date;
     }
@@ -42,7 +58,8 @@ public class Crime {
         mSolved = solved;
     }
 
-    public UUID getId() {
-        return mId;
+    public void setPhone(String phone) {
+        mPhone = phone;
     }
+
 }

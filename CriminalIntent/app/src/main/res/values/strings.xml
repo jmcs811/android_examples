@@ -11,6 +11,20 @@
     <string name="delete_crime">Delete Crime</string>
     <string name="empty_recyclerview_message">Yay! No Crimes. Click button to report a crime</string>
     <string name="report_crime_button">Report Crime</string>
+    <string name="crime_suspect_text">Choose Suspect</string>
+    <string name="crime_report_text">Send Crime Report</string>
+    <string name="crime_report">%1$s!
+        The crime was discovered on %2$s. %3$s, and %4$s
+    </string>
+    <string name="crime_report_solved">The case is solved</string>
+    <string name="crime_report_unsolved">The case is not solved</string>
+    <string name="crime_report_no_suspect">there is no suspect.</string>
+    <string name="crime_report_suspect">the suspect is %s.</string>
+    <string name="crime_report_subject">CriminalIntent Crime Report</string>
+    <string name="send_report">Send crime report via</string>
+    <string name="crime_suspect_no_contacts">No Contacts App</string>
+    <string name="crime_call_suspect">Call Suspect</string>
+    <string name="crime_no_suspect_selected">No Suspect has been selected</string>
     <plurals name="subtitle_plural">
         <item quantity="one">%1$d crime</item>
         <item quantity="other">%1$d crimes</item>
