@@ -39,7 +39,6 @@ public class CrimeFragment extends Fragment {
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
     private static final int REQUEST_CONTACT = 1;
-    private static final int REQUEST_PHONE_NUMBER = 2;
 
     private static final int REQUEST_DATE = 0;
 
@@ -173,9 +172,8 @@ public class CrimeFragment extends Fragment {
         });
 
         if (mCrime.getPhone() != null) {
-            mCallButton.setVisibility(View.VISIBLE);
+            mCallButton.setText(mCrime.getPhone());
         }
-
         return v;
     }
 
@@ -218,7 +216,13 @@ public class CrimeFragment extends Fragment {
             };
             // Perform your query = the contactUri is like a "where"
             // clause here
-            Cursor c = getActivity().getContentResolver().query(contactUri, queryFields, null, null, null);
+            Cursor c = getActivity().getContentResolver().query(
+                    contactUri,
+                    queryFields,
+                    null,
+                    null,
+                    null
+            );
 
             try {
                 // Double-check that you actually got results
@@ -229,23 +233,56 @@ public class CrimeFragment extends Fragment {
                 // Pull out the first column of the first row of data -
                 // that is the suspects name
                 c.moveToFirst();
-                int idIndex = c.getColumnIndex(ContactsContract.Contacts._ID);
                 String suspect = c.getString(0);
-                String contactId = c.getString(idIndex);
                 mCrime.setSuspect(suspect);
                 mSuspectButton.setText(suspect);
+
+                String contactId = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
+
+                // get phone number
+                Cursor phoneNumber = getActivity().getContentResolver().query(
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                        null,
+                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId,
+                        null,
+                        null
+                );
+
+                while (phoneNumber.moveToNext()) {
+                    String number =  phoneNumber.getString(
+                            phoneNumber.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER
+                            ));
+
+                    int type = phoneNumber.getInt(
+                            phoneNumber.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE
+                            ));
+
+                    switch (type) {
+                        case ContactsContract.CommonDataKinds.Phone
+                                .TYPE_HOME:
+                            break;
+                        case ContactsContract.CommonDataKinds.Phone
+                                .TYPE_MOBILE:
+                            // set phone number and set textview to phone number
+                            mCrime.setPhone(number);
+                            mCallButton.setText(number);
+                        case ContactsContract.CommonDataKinds.Phone
+                                .TYPE_WORK:
+                            break;
+                    }
+                }
+                phoneNumber.close();
             } finally {
                 c.close();
 
             }
-        } else if (requestCode == REQUEST_PHONE_NUMBER && data != null) {
-
         }
     }
 
     private void updateDate() {
         mDateButton.setText(mCrime.getDate().toString());
     }
+
 
     private String getCrimeReport() {
         String solvedString = null;
