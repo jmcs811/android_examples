@@ -42,6 +42,10 @@ public class Crime {
 
     public String getPhone() { return mPhone; }
 
+    public String getPhotoFilename() {
+        return "IMG_" + getId().toString() + ".jpg";
+    }
+
     public void setSuspect(String suspect) {
         mSuspect = suspect;
     }

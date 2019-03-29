@@ -3,6 +3,7 @@
     package="com.jcaseydev.criminalintent">
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA" android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +23,15 @@
             android:parentActivityName=".CrimeListActivity">
 
         </activity>
+        <provider
+            android:authorities="com.jcaseydev.criminalintent.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files" />
+        </provider>
     </application>
 
 </manifest>
