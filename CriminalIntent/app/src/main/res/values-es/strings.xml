@@ -12,8 +12,8 @@
     <string name="crime_suspect_text">Elegir Sospechoso</string>
     <string name="crime_report_text">Enviar el Informe del Crimen</string>
     <string name="crime_report">
-%1$s! El crimen fue descubierto el %2$s. %3$s, y %4$s
-</string>
+        %1$s! El crimen fue descubierto el %2$s. %3$s, y %4$s
+    </string>
     <string name="crime_report_solved">El caso está resuelto</string>
     <string name="crime_report_unsolved">El caso no está resuelto</string>
     <string name="crime_report_no_suspect">no hay sospechoso.</string>
@@ -23,4 +23,7 @@
     <string name="delete_crime">"Eliminar crimen "</string>
     <string name="empty_recyclerview_message">Yay! No Crimes</string>
     <string name="report_crime_button">"Reportar el crimen "</string>
+    <string name="crime_suspect_no_contacts">"No hay contactos de la aplicación "</string>
+    <string name="crime_call_suspect">"Llamar al sospechoso "</string>
+    <string name="crime_no_suspect_selected">"No se ha seleccionado ningún sospechoso "</string>
 </resources>

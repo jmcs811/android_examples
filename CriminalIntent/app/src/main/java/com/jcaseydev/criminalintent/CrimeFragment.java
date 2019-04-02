@@ -381,7 +381,7 @@ public class CrimeFragment extends Fragment {
 
 
     private String getCrimeReport() {
-        String solvedString = null;
+        String solvedString;
         if (mCrime.isSolved()) {
             solvedString = getString(R.string.crime_report_solved);
         } else {
@@ -406,10 +406,12 @@ public class CrimeFragment extends Fragment {
         if (mPhotoFile == null || !mPhotoFile.exists()) {
             mPhotoView.setImageDrawable(null);
             mPhotoView.setEnabled(false);
+            mPhotoView.setContentDescription(getString(R.string.crime_photo_no_image_description));
         } else {
             Bitmap bitmap = PictureUtils.getScaledBitmap(mPhotoFile.getPath(), getActivity());
             mPhotoView.setImageBitmap(bitmap);
             mPhotoView.setEnabled(true);
+            mPhotoView.setContentDescription(getString(R.string.crime_photo_image_description));
         }
     }
 }

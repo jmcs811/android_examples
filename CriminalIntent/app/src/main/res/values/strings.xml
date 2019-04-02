@@ -25,6 +25,9 @@
     <string name="crime_suspect_no_contacts">No Contacts App</string>
     <string name="crime_call_suspect">Call Suspect</string>
     <string name="crime_no_suspect_selected">No Suspect has been selected</string>
+    <string name="crime_photo_button_description">Take photo of crime scene</string>
+    <string name="crime_photo_no_image_description">Crime Scene Photo Not set</string>
+    <string name="crime_photo_image_description">Crime Scene photo set</string>
     <plurals name="subtitle_plural">
         <item quantity="one">%1$d crime</item>
         <item quantity="other">%1$d crimes</item>
