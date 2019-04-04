@@ -10,15 +10,15 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
 
     protected abstract Fragment createFragment();
 
-//    @LayoutRes
-//    protected int getLayoutResId() {
-//        return R.layout.activity_fragment;
-//    }
+    @LayoutRes
+    protected int getLayoutResId() {
+        return R.layout.activity_fragment;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_activity);
+        setContentView(getLayoutResId());
 
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
