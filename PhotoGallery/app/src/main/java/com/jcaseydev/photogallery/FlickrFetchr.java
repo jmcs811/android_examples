@@ -18,7 +18,7 @@ import java.util.List;
 public class FlickrFetchr {
 
     private static final String TAG = "FlickerFetchr";
-    private static final String API_KEY = "INESERT_YOUR_KEY_HERE";
+    private static final String API_KEY = "9df31b6fd41e9a73265991e3b0948700";
 
     List<GalleryItem> items = new ArrayList<>();
 
