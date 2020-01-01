@@ -1,4 +1,4 @@
-# android_examples
+# Android Examples
 Examples from "Android Programming: The Big Nerd Ranch Guide 3rd Edition". The following applications are from the big nerd ranch android book. They will serve as examples for future projects.
 
 # List of Applications
